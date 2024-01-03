@@ -1,0 +1,88 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+main(){
+  runApp( MyApp());
+}
+
+class MyApp extends StatelessWidget{
+   MyApp({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return MaterialApp(
+      title: "Flutter Demo",
+      theme: ThemeData(
+        primarySwatch: Colors.blue
+      ),
+      debugShowCheckedModeBanner: false,
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget{
+
+  int CountNumber=0;
+  
+  @override
+  State<StatefulWidget> createState() {
+    return MyHomePageUi();
+  }
+}
+
+class MyHomePageUi extends State<MyHomePage>{
+
+  @override
+  void initstate(){
+    print("InitState");
+    super.initState();
+  }
+  @override
+  void didChangeDependencies(){
+    print("didChangeDependencies");
+    super.didChangeDependencies();
+  }
+
+
+  Widget build(BuildContext context) {
+    print("Build");
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(86, 120, 230, 1),
+      appBar: AppBar(
+        title: Text("My Counter App"),
+        centerTitle:true,
+        backgroundColor: Color.fromRGBO(190, 128, 240, 1),
+        foregroundColor: Color.fromRGBO(0, 0, 0, 1),
+      ),
+      body: Center(
+        child: Text("Count : ${widget.CountNumber}",
+          style: TextStyle(fontSize:50,color: Color.fromRGBO(235, 253, 66, 1)),
+
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.large(
+
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+        backgroundColor: Color.fromRGBO(230, 141, 75, 1),
+        foregroundColor: Colors.black,
+        child: Icon(Icons.add),
+        onPressed: (){
+          setState(() {
+            print("SET STATE");
+            widget.CountNumber=widget.CountNumber+1;
+          });
+        },
+      ),
+
+
+
+
+    );
+
+  }
+
+}
